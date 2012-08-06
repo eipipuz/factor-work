@@ -3,7 +3,11 @@
 USING: kernel ;
 IN: ideal.ast
 
-TUPLE: ast-root statements ;
+TUPLE: ast-root expressions ;
 TUPLE: ast-send target message args ;
-TUPLE: ast-target name ;
+TUPLE: ast-target identifier ;
+TUPLE: ast-identifier name ;
 TUPLE: ast-symbol symbol ;
+
+TUPLE: ast-fixnum number ;
+TUPLE: ast-number number ;

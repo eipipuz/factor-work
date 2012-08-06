@@ -4,17 +4,17 @@
 USING: kernel tools.test locals ideal ideal.ast ;
 IN: ideal.tests
 
-! Helper functions
-:: ast-with-value ( value -- array )
-{ T{ ast-root f V{ T{ ast-send f T{ ast-target f "a" }
-                                  T{ ast-symbol f ":=" }
-                                  V{ value } }
-                  } } } ;
+{ T{ ast-identifier f "a" } } [ "a" ideal-identifier ]
+    unit-test
+
+[ "1a" ideal-identifier ] must-fail
 
 ! Test cases
+: ideal-test-suit ( -- )
 {
     ! Symbols and Basic Send Message
 { "a := #ok" T{ ast-symbol f "ok" } }
+
     ! Numbers
 { "a := 0" T{ ast-fixnum f 0 } }
 { "a := -1234" T{ ast-fixnum f -1234 } }
@@ -27,8 +27,7 @@ IN: ideal.tests
     ! Strings
     ! Tables
 
-} [ first2 [ 1array ] [ [ parse-ideal ] curry ] bi*
-    unit-test ] each
+} drop ;
 
 ! ranges
 ! collections
