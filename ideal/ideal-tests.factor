@@ -9,6 +9,7 @@ IN: ideal.tests
 
 [ "1a" ideal-identifier ] must-fail
 
+{ T{ ast-symbol f "ok" } } [ "#ok" ideal-symbol ] unit-test
 ! Test cases
 : ideal-test-suit ( -- )
 {

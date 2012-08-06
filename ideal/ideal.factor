@@ -14,6 +14,10 @@ EBNF: ideal-identifier
 Identifier = [a-z] [a-zA-Z0-9]* => [[ join-characters ast-identifier boa ]]
 ;EBNF
 
+EBNF: ideal-symbol
+Symbol = "#" [a-zA-Z0-9?_!-+=/*%$:@]+ => [[ first2 nip >string ast-symbol boa ]]
+;EBNF
+
 EBNF: ideal
 Space = " " | "\t" | "\n"
 Spaces = Space* => [[ ignore ]]
